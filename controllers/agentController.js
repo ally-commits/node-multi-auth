@@ -54,5 +54,18 @@ module.exports.getLoans = async (req, res) => {
         res.status(400).json({ error: error });
     }   
 }
+
+
+module.exports.updateLoan = async (req, res) => {
+    const { loan_id,interestRate, duration,amount } = req.body;
+    try {
+        const user = await Loan.updateOne({_id: loan_id}, {interestRate, duration,amount});        
+        res.status(201).json({ message: "Done successfully"});
+    }
+    catch(err) { 
+        let error = err.message 
+        res.status(400).json({ error: error });
+    }   
+}
   
  

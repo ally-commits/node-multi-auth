@@ -35,7 +35,7 @@ module.exports.addAgent = async (req, res) => {
     try {
         const user = await User.create({ email, password,name,role: "AGENT" });
         
-        res.status(201).json({ user: user});
+        res.status(201).json({ user: user,message: "Added Succesfully"});
     }
     catch(err) { 
         let error = err.message
@@ -58,4 +58,7 @@ module.exports.updateLoanStatus = async (req, res) => {
         res.status(400).json({ error: error });
     }   
 }
+  
+
+
   
